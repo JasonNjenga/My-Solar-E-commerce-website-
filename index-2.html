@@ -1,62 +1,264 @@
 <!DOCTYPE html>
-<html lang=""en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<html lang="en">
+    <head>
+        <title>My Solar Shop</title>
+        <link href="style.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="icon" href="images/favicon.ico">
+        <script src="appHandler.js" defer></script>
+    </head>
+    <body>
 
-<div class="container">
-    <header>
-        <h1>LIST PRODUCT</h1>
-        <div class="ICONCART">
-            <img src="solar images/download.png" alt="">
-            <div class="totalQuantity">0</div>
-        </div>
-    </header>
-
-    <div class="listProduct">
-        <div class="item">
-            <img src="solar images/download (1).jpeg">
-            <h2>Product Name</h2>
-            <div class="price">KSh5000</div>
-            <button>Add To Cart</button>
-        </div>
-    </div>
-</div>
-
-<div class="cart">
-    <h2>CART</h2>
-    <div class="listCart">
-        <div class="item">
-            <img src="solar images/download (1).jpeg">
-            <div class="content">
-                <div class="name">
-                    Product Name
+        <!--HEADING-->
+        <nav>
+            <div id="page-heading">
+                <div class="nav-left">
+                    <img alt="My Solar Shop" src="C:\Users\hp\Desktop\AI SOLAR VERSON\Solar website logo.jpg" class="logo">
+                    <span class="brand-name">MySolarShop</span>
                 </div>
-                <div class="price">
-                    ksh5000/1 Product
+                <div class="nav-right">
+                    <div>
+                        <ul>
+                            <li class="active"><a href="index.html">Home</a></li>
+                            <li><a href="#">Products</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Services</a></li>
+                        </ul>
+                    </div>
+                    <button class="cart-button purple-pink-button">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <line x1="3" y1="6" x2="21" y2="6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 10a4 4 0 01-8 0" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Cart</span>
+                    </button>
                 </div>
             </div>
-            <div class="quantity">
-                <button>-</button>
-                <span class="value">3</span>
-                <button>+</button>
-            </div>
-        </div>
-    </div>
-    <div class="button">
-        <div class="close">CLOSE</div>
-        <div class="checkout">
-            <a href="checkout.html">
-                checkout
-            </a>
-        </div>
-    </div>
-</div>
+        </nav>
+        <!--END OF HEADING-->
 
- <script src=""app.js"></script>
-</body>
+        <!--MAIN BODY-->
+        <div id="main-body">
+
+            <!--SHOPPING CART-->
+            <div id="cart-window">
+                <div class="overlay"></div>
+                <div id="cart-box">
+
+                    <div class="heading">
+                        <div class="title-circle-container">
+                            <div class="purple-pink-circle"></div>
+                            <div>
+                                <h1>My Order</h1>
+                                <p>Quick Delivery</p>
+                            </div>
+                        </div>
+                        <button class="close-button">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 6L6 18M6 6l12 12" stroke="rgb(128,0,255)" stroke-width="2.5" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div id="cart-items-container">
+                        <span class="empty-cart-message">Your cart is empty. Order an item.</span>
+                        <div class="white-fade-overflow top"></div>
+                        <ul></ul>
+                        <div class="white-fade-overflow bottom"></div>
+                    </div>
+
+                    <div id="cart-checkout">
+                        <div id="total-checkout">
+                            <p>Total</p>
+                            <span class="price">KES0.00</span>
+                        </div>
+                        <button id="checkout-button" class="purple-pink-button">
+                            Checkout
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            <!--END OF SHOPPING CART-->
+
+            <!--CUSTOMER DETAILS FORM (PAYMENT STEP 1)-->
+            <div id="customer-details-window">
+                <div class="overlay"></div>
+                <div id="customer-details-box">
+
+                    <div class="heading">
+                        <div class="title-circle-container">
+                            <div class="purple-pink-circle"></div>
+                            <div>
+                                <h1>Delivery Details</h1>
+                                <p>Please fill in your information</p>
+                            </div>
+                        </div>
+                        <button class="close-button" id="close-customer-form">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 6L6 18M6 6l12 12" stroke="rgb(128,0,255)" stroke-width="2.5" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div id="customer-form-container">
+                        <form id="customerDetailsForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" id="first-name" placeholder="John" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" id="last-name" placeholder="Doe" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email-address">Email Address</label>
+                                <input type="email" id="email-address" placeholder="john@example.com" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="phone-number">Phone Number</label>
+                                <input type="tel" id="phone-number" placeholder="+254 712 345 678" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="delivery-address">Delivery Destination</label>
+                                <textarea id="delivery-address" rows="3" placeholder="Enter your full delivery address..." required></textarea>
+                            </div>
+                            <div class="form-group order-summary">
+                                <label>Order Total</label>
+                                <div id="order-total-display" class="price">KES0.00</div>
+                            </div>
+                            <button type="submit" class="purple-pink-button pay-button">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 4h22l-2 13H3L1 4z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8 22h8M12 18v4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Proceed to Payment
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <!--END OF CUSTOMER DETAILS FORM-->
+
+            <!--HERO SECTION-->
+            <div id="hero-section">
+                <div class="hero-text">
+                    <span class="hero-tag">🌞 Clean Energy Solutions</span>
+                    <h1>Power Your World <br>With <span class="gradient-text">Solar Energy</span></h1>
+                    <p>Affordable, reliable solar products delivered to your door step. Start saving on electricity today.</p>
+                    <button class="purple-pink-button hero-btn">Shop Now</button>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-glow"></div>
+                    <div class="hero-icon">☀️</div>
+                </div>
+            </div>
+            <!--END OF HERO-->
+
+            <!--MENU CHOICES-->
+            <div id="menu-choices">
+                <ul>
+                    <li class="active"><span>All Products</span></li>
+                    <li><span>Solar Panels</span></li>
+                    <li><span>Solar Batteries</span></li>
+                    <li><span>Water Heaters</span></li>
+                    <li><span>Solar Inverters</span></li>
+                    <li><span>Solar Kits</span></li>
+                    <li><span>Lighting</span></li>
+                    <li><span>Solar Parts</span></li>
+                </ul>
+            </div>
+            <!--END OF MENU CHOICES-->
+
+            <!--PRODUCTS-->
+            <div id="product-container">
+                <div class="title-circle-container">
+                    <div class="purple-pink-circle"></div>
+                    <h1>Products</h1>
+                </div>
+
+                <ul class="product-list">
+
+                    <li>
+                        <div class="image-container">
+                            <div class="product-emoji">☀️</div>
+                        </div>
+                        <div class="product-text">
+                            <p class="title">Solar Panel</p>
+                            <p class="price">KES5</p>
+                            <button class="order-button purple-pink-button">Add to Cart</button>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="image-container">
+                            <div class="product-emoji">🔋</div>
+                        </div>
+                        <div class="product-text">
+                            <p class="title">Solar Battery</p>
+                            <p class="price">KES4500</p>
+                            <button class="order-button purple-pink-button">Add to Cart</button>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="image-container">
+                            <div class="product-emoji">🚿</div>
+                        </div>
+                        <div class="product-text">
+                            <p class="title">Solar Water Heater</p>
+                            <p class="price">KES6500</p>
+                            <button class="order-button purple-pink-button">Add to Cart</button>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="image-container">
+                            <div class="product-emoji">📦</div>
+                        </div>
+                        <div class="product-text">
+                            <p class="title">Solar Kit Premium</p>
+                            <p class="price">KES45000</p>
+                            <button class="order-button purple-pink-button">Add to Cart</button>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="image-container">
+                            <div class="product-emoji">⚡</div>
+                        </div>
+                        <div class="product-text">
+                            <p class="title">Solar Inverter</p>
+                            <p class="price">KES8500</p>
+                            <button class="order-button purple-pink-button">Add to Cart</button>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="image-container">
+                            <div class="product-emoji">💡</div>
+                        </div>
+                        <div class="product-text">
+                            <p class="title">Solar Kit Lite</p>
+                            <p class="price">KES35000</p>
+                            <button class="order-button purple-pink-button">Add to Cart</button>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <!--END OF PRODUCTS-->
+
+        </div>
+        <!--END OF MAIN BODY-->
+
+    </body>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
 </html>
