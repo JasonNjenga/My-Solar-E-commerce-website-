@@ -8,6 +8,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
         <link rel="icon" href="images/favicon.ico">
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <script src="appHandler.js" defer></script>
     </head>
     <body>
@@ -48,7 +49,6 @@
             <div id="cart-window">
                 <div class="overlay"></div>
                 <div id="cart-box">
-
                     <div class="heading">
                         <div class="title-circle-container">
                             <div class="purple-pink-circle"></div>
@@ -63,14 +63,12 @@
                             </svg>
                         </button>
                     </div>
-
                     <div id="cart-items-container">
                         <span class="empty-cart-message">Your cart is empty. Order an item.</span>
                         <div class="white-fade-overflow top"></div>
                         <ul></ul>
                         <div class="white-fade-overflow bottom"></div>
                     </div>
-
                     <div id="cart-checkout">
                         <div id="total-checkout">
                             <p>Total</p>
@@ -80,16 +78,31 @@
                             Checkout
                         </button>
                     </div>
-
                 </div>
             </div>
             <!--END OF SHOPPING CART-->
 
-            <!--CUSTOMER DETAILS FORM (PAYMENT STEP 1)-->
+            <!--CUSTOMER DETAILS FORM-->
             <div id="customer-details-window">
                 <div class="overlay"></div>
                 <div id="customer-details-box">
 
+                    <!-- TOP NAV ROW: back arrow left, close X right -->
+                    <div class="form-nav-row">
+                        <button class="back-button" id="back-to-cart">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 12H5M5 12l7 7M5 12l7-7" stroke="rgb(128,0,255)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Back to My Order
+                        </button>
+                        <button class="close-button" id="close-customer-form">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 6L6 18M6 6l12 12" stroke="rgb(128,0,255)" stroke-width="2.5" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- FORM TITLE -->
                     <div class="heading">
                         <div class="title-circle-container">
                             <div class="purple-pink-circle"></div>
@@ -98,11 +111,6 @@
                                 <p>Please fill in your information</p>
                             </div>
                         </div>
-                        <button class="close-button" id="close-customer-form">
-                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M18 6L6 18M6 6l12 12" stroke="rgb(128,0,255)" stroke-width="2.5" stroke-linecap="round"/>
-                            </svg>
-                        </button>
                     </div>
 
                     <div id="customer-form-container">
@@ -126,7 +134,7 @@
                                 <input type="tel" id="phone-number" placeholder="+254 712 345 678" required />
                             </div>
                             <div class="form-group">
-                                <label for="delivery-address">Delivery Destination</label>
+                                <label for="delivery-address">Delivery Destination/Location</label>
                                 <textarea id="delivery-address" rows="3" placeholder="Enter your full delivery address..." required></textarea>
                             </div>
                             <div class="form-group order-summary">
@@ -175,7 +183,6 @@
                     <li><span>Solar Parts</span></li>
                 </ul>
             </div>
-            <!--END OF MENU CHOICES-->
 
             <!--PRODUCTS-->
             <div id="product-container">
@@ -183,78 +190,57 @@
                     <div class="purple-pink-circle"></div>
                     <h1>Products</h1>
                 </div>
-
                 <ul class="product-list">
-
                     <li>
-                        <div class="image-container">
-                            <div class="product-emoji">☀️</div>
-                        </div>
+                        <div class="image-container"><div class="product-emoji">☀️</div></div>
                         <div class="product-text">
                             <p class="title">Solar Panel</p>
                             <p class="price">KES5</p>
                             <button class="order-button purple-pink-button">Add to Cart</button>
                         </div>
                     </li>
-
                     <li>
-                        <div class="image-container">
-                            <div class="product-emoji">🔋</div>
-                        </div>
+                        <div class="image-container"><div class="product-emoji">🔋</div></div>
                         <div class="product-text">
                             <p class="title">Solar Battery</p>
                             <p class="price">KES4500</p>
                             <button class="order-button purple-pink-button">Add to Cart</button>
                         </div>
                     </li>
-
                     <li>
-                        <div class="image-container">
-                            <div class="product-emoji">🚿</div>
-                        </div>
+                        <div class="image-container"><div class="product-emoji">🚿</div></div>
                         <div class="product-text">
                             <p class="title">Solar Water Heater</p>
                             <p class="price">KES6500</p>
                             <button class="order-button purple-pink-button">Add to Cart</button>
                         </div>
                     </li>
-
                     <li>
-                        <div class="image-container">
-                            <div class="product-emoji">📦</div>
-                        </div>
+                        <div class="image-container"><div class="product-emoji">📦</div></div>
                         <div class="product-text">
                             <p class="title">Solar Kit Premium</p>
                             <p class="price">KES45000</p>
                             <button class="order-button purple-pink-button">Add to Cart</button>
                         </div>
                     </li>
-
                     <li>
-                        <div class="image-container">
-                            <div class="product-emoji">⚡</div>
-                        </div>
+                        <div class="image-container"><div class="product-emoji">⚡</div></div>
                         <div class="product-text">
                             <p class="title">Solar Inverter</p>
                             <p class="price">KES8500</p>
                             <button class="order-button purple-pink-button">Add to Cart</button>
                         </div>
                     </li>
-
                     <li>
-                        <div class="image-container">
-                            <div class="product-emoji">💡</div>
-                        </div>
+                        <div class="image-container"><div class="product-emoji">💡</div></div>
                         <div class="product-text">
                             <p class="title">Solar Kit Lite</p>
                             <p class="price">KES35000</p>
                             <button class="order-button purple-pink-button">Add to Cart</button>
                         </div>
                     </li>
-
                 </ul>
             </div>
-            <!--END OF PRODUCTS-->
 
         </div>
         <!--END OF MAIN BODY-->
